@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SlideShow from "@/components/SlideShow";
 import FeaturesSection from "@/components/FeaturesSection";
+import MetricsSection from "@/components/MetricsSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function Home() {
       <Section1 />
       <SlideShow />
       <FeaturesSection />
+      <MetricsSection />
     </div>
   );
 }
