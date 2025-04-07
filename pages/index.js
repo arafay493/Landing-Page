@@ -9,6 +9,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import MetricsSection from "@/components/MetricsSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import TeamSection from "@/components/TeamSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function Home() {
       <MetricsSection />
       <TestimonialsSection />
       <PricingSection />
+      <TeamSection />
     </div>
   );
 }
