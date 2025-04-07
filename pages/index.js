@@ -13,6 +13,7 @@ import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import HeroSection from "@/components/HeroSection";
 import HeroSectionV2 from "@/components/HeroSectionV2";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,18 +27,21 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   return (
-    <div className="p-10 bg-[#f8f9ff]">
-      <Header />
-      <Section1 />
-      <SlideShow />
-      <FeaturesSection />
-      <MetricsSection />
-      <HeroSectionV2 />
-      <TestimonialsSection />
-      <PricingSection />
-      <TeamSection />
-      <HeroSection />
-      <ContactSection />
+    <div className="bg-[#f8f9ff]">
+      <div className="p-10">
+        <Header />
+        <Section1 />
+        <SlideShow />
+        <FeaturesSection />
+        <MetricsSection />
+        <HeroSectionV2 />
+        <TestimonialsSection />
+        <PricingSection />
+        <TeamSection />
+        <HeroSection />
+        <ContactSection />
+      </div>
+      <Footer />
     </div>
   );
 }
