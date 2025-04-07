@@ -3,7 +3,7 @@ import { LuRocket } from "react-icons/lu";
 const Section1 = () => {
   return (
     <div className="flex justify-between items-center h-screen">
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 max-w-[500px]">
         <h1 className="text-5xl font-bold">
           Create Engaging {"\n"} Landing Pages
         </h1>
