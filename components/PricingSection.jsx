@@ -1,5 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 const plans = [
   {
@@ -38,24 +39,52 @@ const plans = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 30 },
+  visible: { opacity: 1, scale: 1, y: 0 },
+};
+
 const PricingSection = () => {
   return (
-    <div className="py-16 px-4 bg-[#f9f9fc] text-center">
-      <h2 className="text-3xl font-bold mb-4">Pick Your Perfect Plan</h2>
-      <p className="text-gray-500 mb-12">
+    <motion.div
+      className="py-16 px-4 bg-[#f9f9fc] text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-4"
+        variants={cardVariants}
+        transition={{ duration: 0.5 }}
+      >
+        Pick Your Perfect Plan
+      </motion.h2>
+      <motion.p
+        className="text-gray-500 mb-12"
+        variants={cardVariants}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         Find the perfect plan for your business with our flexible pricing
         options.
-      </p>
+      </motion.p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {plans.map((plan, index) => (
-          <div
+          <motion.div
             key={index}
             className={`rounded-2xl p-8 shadow-md text-left flex flex-col justify-between ${
               plan.highlight
                 ? "bg-[#009379] text-white"
                 : "bg-white text-gray-800"
             }`}
+            variants={cardVariants}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.2,
+              type: plan.highlight ? "spring" : "tween",
+              bounce: plan.highlight ? 0.3 : 0,
+            }}
           >
             <div>
               <h3 className="text-lg font-medium mb-2">{plan.name}</h3>
@@ -78,31 +107,20 @@ const PricingSection = () => {
                 ))}
               </ul>
             </div>
-            {index === 2 ? (
-              <button
-                className={`w-full py-3 rounded-xl font-semibold transition ${
-                  plan.highlight
-                    ? "bg-white text-emerald-600 hover:bg-gray-100"
-                    : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
-                }`}
-              >
-                Get Started <span className="ml-1">→</span>
-              </button>
-            ) : (
-              <button
-                className={`w-full py-3 rounded-xl font-semibold transition ${
-                  plan.highlight
-                    ? "bg-white text-[#009379] hover:bg-gray-100"
-                    : "bg-emerald-100 text-[#009379] hover:bg-emerald-200"
-                }`}
-              >
-                Get Started
-              </button>
-            )}
-          </div>
+            <button
+              className={`w-full py-3 rounded-xl font-semibold transition ${
+                plan.highlight
+                  ? "bg-white text-[#009379] hover:bg-gray-100"
+                  : "bg-emerald-100 text-[#009379] hover:bg-emerald-200"
+              }`}
+            >
+              Get Started
+              {plan.highlight && <span className="ml-1">→</span>}
+            </button>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
