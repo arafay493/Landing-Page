@@ -1,5 +1,6 @@
 import React from "react";
 import { Twitter, Instagram, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 
 const teamMembers = [
   {
@@ -34,26 +35,52 @@ const teamMembers = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const TeamSection = () => {
   return (
-    <div className="bg-[#f9f9fc] py-16 px-4 text-center">
-      <h2 className="text-3xl font-bold mb-2">Meet our team</h2>
-      <p className="text-gray-500 mb-12">
+    <motion.div
+      className="bg-[#f9f9fc] py-16 px-4 text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-2"
+        variants={cardVariants}
+        transition={{ duration: 0.5 }}
+      >
+        Meet our team
+      </motion.h2>
+      <motion.p
+        className="text-gray-500 mb-12"
+        variants={cardVariants}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         Get to know the faces behind the scenes and learn about the values that
         drive us.
-      </p>
+      </motion.p>
 
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
         {teamMembers.map((member, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-2xl shadow-md overflow-hidden"
+            variants={cardVariants}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
           >
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-72 object-cover"
-            />
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-72 object-cover transition-transform duration-300"
+              />
+            </motion.div>
+
             <div className="p-4">
               <h3 className="text-lg font-semibold">{member.name}</h3>
               <p className="text-sm text-gray-500 mb-4">{member.role}</p>
@@ -93,10 +120,10 @@ const TeamSection = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
