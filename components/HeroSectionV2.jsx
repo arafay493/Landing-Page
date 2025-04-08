@@ -22,7 +22,7 @@ const HeroSectionV2 = () => {
             Break the Figma limits and explore the endless possibilities with
             Anima.
           </p>
-          <button className="mt-6 bg-[#009379] hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md flex items-center gap-2">
+          <button className="mt-6 bg-[#009379] hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md flex justify-center items-center gap-2 w-full md:w-auto">
             Get Started <span>→</span>
           </button>
         </div>

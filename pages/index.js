@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div className="bg-[#f8f9ff]">
-      <div className="p-10">
+      <div className="p-5 md:p-10 ">
         <Header />
         <Section1 />
         <SlideShow />

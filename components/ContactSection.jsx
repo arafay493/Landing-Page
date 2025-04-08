@@ -69,7 +69,7 @@ const ContactSection = () => {
 
             <button
               type="submit"
-              className="bg-[#009379] hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl"
+              className="bg-[#009379] hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl w-full md:w-auto"
             >
               Submit
             </button>
