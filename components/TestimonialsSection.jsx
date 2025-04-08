@@ -1,5 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -28,19 +29,42 @@ const testimonials = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 30 },
+  visible: { opacity: 1, scale: 1, y: 0 },
+};
+
 const TestimonialsSection = () => {
   return (
-    <div className="bg-[#f9f9fc] py-16 px-4 text-center">
-      <h2 className="text-3xl font-bold mb-2">Real Stories from Satisfied Customers</h2>
-      <p className="text-gray-500 mb-12">
+    <motion.div
+      className="bg-[#f9f9fc] py-16 px-4 text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-2"
+        variants={cardVariants}
+        transition={{ duration: 0.5 }}
+      >
+        Real Stories from Satisfied Customers
+      </motion.h2>
+      <motion.p
+        className="text-gray-500 mb-12"
+        variants={cardVariants}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         See how our landing page ui kit is making an impact.
-      </p>
+      </motion.p>
 
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
         {testimonials.map((testimonial, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center"
+            variants={cardVariants}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <img
               src={testimonial.avatar}
@@ -60,10 +84,10 @@ const TestimonialsSection = () => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
