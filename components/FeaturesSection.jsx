@@ -1,5 +1,6 @@
 import React from "react";
 import { Sparkles, LayoutGrid, PartyPopper } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -34,33 +35,66 @@ const features = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const FeaturesSection = () => {
   return (
-    <div className="py-16 px-4 bg-[#f9f9fc] text-center">
-      <h2 className="text-3xl font-bold mb-4">Features</h2>
-      <p className="text-gray-500 max-w-xl mx-auto mb-12">
+    <motion.div
+      className="py-16 px-4 bg-[#f9f9fc] text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
+      <motion.h2 className="text-3xl font-bold mb-4" variants={cardVariants}>
+        Features
+      </motion.h2>
+
+      <motion.p
+        className="text-gray-500 max-w-xl mx-auto mb-12"
+        variants={cardVariants}
+      >
         These are just a few features you’ll get using Anima Landing Page UI
         Kit.
-      </p>
-      <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+      </motion.p>
+
+      <motion.div
+        className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto"
+        variants={containerVariants}
+      >
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
+            variants={cardVariants}
           >
             <div className="mb-4 flex justify-center">{feature.icon}</div>
             <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-            <p className="text-gray-600 text-sm mb-4">{feature.description}</p>
+            <p className="text-gray-600 text-sm mb-4">
+              {feature.description}
+            </p>
             <a
               href="#"
               className="text-teal-600 font-semibold text-sm inline-flex items-center hover:underline"
             >
               Learn More <span className="ml-1">→</span>
             </a>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
